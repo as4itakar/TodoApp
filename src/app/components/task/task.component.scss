@@ -1,12 +1,33 @@
 @import 'src/global.scss';
 
 .todo-panel{
-    width:80%;
+    width:90%;
     margin: 10px auto;
     min-height: 80px;
     display: flex;
     justify-content: space-around;
     align-items: center;
     border-radius: $low-radius;
-    border: 2px solid lightgray
+    border: 2px solid lightgray;
+    padding: 10px 0;
+
 }
+
+.name-container{
+    flex: .3;
+    text-align: center;
+}
+
+.info-container{
+    flex: 1;
+    text-align: center;
+}
+
+.controler-container{
+    flex: .3;
+
+    button{
+        margin: 5px;
+    }
+}
+
