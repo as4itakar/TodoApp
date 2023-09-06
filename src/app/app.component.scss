@@ -1,0 +1,10 @@
+@import 'src/global.scss';
+
+.main-wrapper{
+    min-height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(45deg, $blue, $light-blue);
+}

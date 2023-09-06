@@ -1,0 +1,71 @@
+@import "src/global.scss";
+
+.header{
+    top:0;
+    left: 0;
+    width: 100%;
+    padding: 10px 0;
+    background-color: $white;
+    z-index: 3;
+}
+
+.header-container{
+    width: 60%;
+    height: 100%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+}
+
+article.visible{
+    display: block;
+}
+
+.logo-container{
+    user-select: none;
+    font-size: 1.3em;
+}
+
+.nav-link{
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+.nav-menu{
+    width: 30px;
+    height: 100%;
+    display: none;
+    cursor: pointer;
+}
+
+.menu-el{
+    width: 100%;
+    height: 4px;
+    background-color: $black;
+    margin: 2px 0;
+}
+
+@media screen and (max-width: 750px) {
+    .nav-container{
+      position: absolute;
+      bottom: -70px;
+      right: 0;
+      background-color: $white;
+      padding: 10px;
+      border-radius: $big-radius;
+      border: 2px solid $black;
+      display: none;
+    }
+
+    .nav-container a, .nav-container-button{
+        margin: 0 10px;
+    }
+    section.nav-menu {
+        display: block;
+    }
+    .header-container{
+        width: 90%;
+    }
+  }
