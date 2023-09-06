@@ -1,0 +1,12 @@
+@import 'src/global.scss';
+
+.todo-panel{
+    width:80%;
+    margin: 10px auto;
+    min-height: 80px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border-radius: $low-radius;
+    border: 2px solid lightgray
+}
