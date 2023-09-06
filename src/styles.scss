@@ -43,5 +43,27 @@ body{
     font-size: 1.2rem;
 }
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+.text-field{
+    padding: 5px;
+    border: none;
+    border-bottom: 1px solid lightgray;
+    background-color: transparent;
+    outline: none;
+}
+
+.text-field:focus{
+    border-bottom: 1px solid $blue;
+}
+
+.text-area{
+    border: 1px solid lightgray;
+    resize: none;
+    background-color: transparent;
+    border-radius: $low-radius;
+    outline: none;
+    padding: 5px;
+}
+
+.text-area:focus{
+    border: 1px solid $blue;
+}

@@ -3,6 +3,6 @@
     <h5 class="normal-title black">Заметки</h5>
   </article>
   <article class="todo-container">
-    <app-task></app-task>
+    <app-task *ngFor="let task of tasks" [task]="task" (deleteEmitter)="deleteTask($event)" (taskEmitter)="sendTask($event)"></app-task>
   </article>
 </section>

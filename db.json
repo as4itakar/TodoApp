@@ -1,7 +1,3 @@
 {
-    "posts": [
-      { "id": 1, "title": "fDo", "about": "typicode" },
-      { "id": 2, "title": "sDo", "about": "typicode" },
-      { "id": 3, "title": "tDo", "about": "typicode" }
-    ]
-  }
+  "tasks": []
+}
