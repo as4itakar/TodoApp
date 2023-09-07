@@ -4,21 +4,26 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
 import { MainComponent } from './components/main/main.component';
-import { TodoModule } from './modules/todo/todo.module';
+import { AppRoutingModule } from './app-routing-module';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
-  declarations: [
+  declarations: 
+  [
     AppComponent,
     HeaderComponent,
     MainComponent
   ],
-  imports: [
+  imports: 
+  [
     BrowserModule,
-    TodoModule,
-    MatButtonModule,
+    AppRoutingModule,
+    NoopAnimationsModule,
+  
   ],
-  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

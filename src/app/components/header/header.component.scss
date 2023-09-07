@@ -28,10 +28,12 @@ article.visible{
     font-size: 1.3em;
 }
 
-.nav-link{
+a.nav-link{
     cursor: pointer;
     margin-right: 10px;
     font-size: 1rem;
+    text-decoration: none;
+    color: $black;
 }
 
 .nav-menu{
@@ -69,4 +71,4 @@ article.visible{
     .header-container{
         width: 90%;
     }
-  }
+}
