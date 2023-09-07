@@ -1,44 +1,38 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Task } from 'src/app/types/Task';
-import { map, take } from 'rxjs/operators'
 import { Observable } from 'rxjs';
 import { NewTask } from 'src/app/types/NewTask';
+import { TaskConfigService } from '../task-config/task-config.service';
 
 @Injectable()
 export class TaskCrudService {
 
-  constructor(private http: HttpClient) { }
+  headers = new HttpHeaders()
+
+  url: string = 'http://localhost:3000/tasks'
+
+  constructor(private http: HttpClient, private taskConfig: TaskConfigService) { 
+    this.headers.set('Content-type', 'application/json')
+  }
 
   getTasks(): Observable<Task>{
-    return this.http.get('http://localhost:3000/tasks').pipe(
-      map( (task) => {
-        console.log(task)
-        return <Task>task
-      }),
-      take(1)
-    )
+    const stream$: Observable<Task> = this.http.get<Task>(this.url)
+    return this.taskConfig.pipeMethod(stream$, 'Заметок не найдено...')
   }
 
-  changeTask(task: Task): Observable<Object>{
-    console.log(task)
-    const headers = new HttpHeaders().set('Content-type', 'application/json')
-    return this.http.put('http://localhost:3000/tasks/' + task.id, {title: task.title, about: task.about}, {headers}).pipe(
-      take(1)
-    )
+  changeTask(task: Task): Observable<Task>{
+    const stream$: Observable<Task> = this.http.put<Task>(this.url + '/' + task.id, {title: task.title, about: task.about}, {headers: this.headers})
+    return this.taskConfig.pipeMethod(stream$, 'Не удалось изменить заметку...')
   }
 
-  deleteTask(id: number): Observable<Object>{
-    return this.http.delete('http://localhost:3000/tasks/' + id).pipe(
-      take(1)
-    )
+  deleteTask(id: number): Observable<Task>{
+    const stream$: Observable<Task> = this.http.delete<Task>(this.url + '/' + id)
+    return this.taskConfig.pipeMethod(stream$, 'Не удалось удалить заметку...')
   }
 
-  addTask(newTask: NewTask): Observable<Object>{
-    console.log('asd')
-    const headers = new HttpHeaders().set('Content-type', 'application/json')
-    return this.http.post('http://localhost:3000/tasks', newTask, {headers}).pipe(
-      take(1)
-    )
+  addTask(newTask: NewTask): Observable<Task>{
+    const stream$: Observable<Task> = this.http.post<Task>(this.url, newTask, {headers: this.headers})
+    return this.taskConfig.pipeMethod(stream$, 'Не удалось добавить заметку...')
   }
 }

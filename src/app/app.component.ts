@@ -1,6 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { TaskCrudService } from './services/tasks/task-crud.service';
-import { Subscription } from 'rxjs';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-root',

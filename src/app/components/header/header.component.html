@@ -1,11 +1,13 @@
 <header class="header">
   <nav class="header-container">
     <section class="logo-container">
-      <h5 class="normal-title black">TestApp</h5>
+      <h5 class="normal-title black">TodoApp</h5>
     </section>
     <section class="nav-container">
-      <a class="nav-link" [routerLink]="['']">Главная</a>
-      <a class="nav-link" [routerLink]="['/tasks']">Заметки</a>
+      <a class="nav-link" routerLink="" routerLinkActive="active"
+      [routerLinkActiveOptions]="{exact:true}" >Главная</a>
+      <a class="nav-link" routerLink="/tasks" routerLinkActive="active"
+      [routerLinkActiveOptions]="{exact:true}">Заметки</a>
     </section>
     <section class="nav-menu">
       <div class="menu-el"></div>

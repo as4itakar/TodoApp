@@ -2,7 +2,7 @@
   <article class="title-container">
     <h5 class="normal-title black">Добавить заметку</h5>
   </article>
-  <form [formGroup]="this.fg" class="form-container" (ngSubmit)="confirmForm()" novalidate>
+  <form [formGroup]="fg" class="form-container" (ngSubmit)="confirmForm()" novalidate>
     <div class="input-container">
       <input formControlName="title" class="text-field" placeholder="Введите название..." type="text">
       <p *ngIf="fg.controls['title'].invalid && fg.controls['title'].touched" class="black">Поле должно быть заполнено...</p>

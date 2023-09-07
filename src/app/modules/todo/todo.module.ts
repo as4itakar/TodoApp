@@ -1,18 +1,22 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { TodoComponent } from './todo.component';
-import { TaskComponent } from 'src/app/components/task/task.component';
-import {MatButtonModule} from '@angular/material/button';
-import { TaskCrudService } from 'src/app/services/tasks/task-crud.service';
-import { AddPanelComponent } from 'src/app/components/add-panel/add-panel.component';
+import { MatButtonModule } from '@angular/material/button';
 import {MatDialogModule} from '@angular/material/dialog';
 import { TodoRoutingModule } from './todo-routing-module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
+import { TodoComponent } from './todo.component';
+import { TaskComponent } from 'src/app/components/task/task.component';
+import { AddPanelComponent } from 'src/app/components/add-panel/add-panel.component';
+
+import { TaskCrudService } from 'src/app/services/tasks/task-crud.service';
+import { TaskConfigService } from 'src/app/services/task-config/task-config.service';
+
 
 @NgModule({
-  imports: [
+  imports: 
+  [
     CommonModule,
     TodoRoutingModule,
     MatDialogModule,
@@ -21,8 +25,10 @@ import { HttpClientModule } from '@angular/common/http';
     FormsModule,
     HttpClientModule
   ],
-  providers: [
-    TaskCrudService
+  providers: 
+  [
+    TaskCrudService,
+    TaskConfigService
   ],
   declarations: 
   [

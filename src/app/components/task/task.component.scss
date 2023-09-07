@@ -9,25 +9,37 @@
     align-items: center;
     border-radius: $low-radius;
     border: 2px solid $black;
-    padding: 10px 0;
+    padding: 10px;
     background-color: $white;
 }
 
 .name-container{
     flex: .3;
     text-align: center;
+    padding: 10px 0;
 }
 
 .info-container{
     flex: 1;
     text-align: center;
+
+    p{
+        word-break:normal
+    }
 }
 
 .controler-container{
-    flex: .3;
+    flex: .4;
 
     button{
         margin: 5px;
+    }
+}
+
+@media screen and (max-width: 750px) {
+    .todo-panel{
+        flex-direction: column;
+        padding: 10px 0;
     }
 }
 

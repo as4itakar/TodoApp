@@ -28,7 +28,7 @@ article.visible{
     font-size: 1.3em;
 }
 
-a.nav-link{
+.nav-link{
     cursor: pointer;
     margin-right: 10px;
     font-size: 1rem;
@@ -50,25 +50,6 @@ a.nav-link{
     margin: 2px 0;
 }
 
-@media screen and (max-width: 750px) {
-    .nav-container{
-      position: absolute;
-      bottom: -70px;
-      right: 0;
-      background-color: $white;
-      padding: 10px;
-      border-radius: $big-radius;
-      border: 2px solid $black;
-      display: none;
-    }
-
-    .nav-container a, .nav-container-button{
-        margin: 0 10px;
-    }
-    section.nav-menu {
-        display: block;
-    }
-    .header-container{
-        width: 90%;
-    }
+.active{
+    color: $light-blue
 }

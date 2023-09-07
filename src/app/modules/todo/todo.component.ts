@@ -1,6 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { Subscription } from 'rxjs';
 import { AddPanelComponent } from 'src/app/components/add-panel/add-panel.component';
 import { TaskCrudService } from 'src/app/services/tasks/task-crud.service';
 import { Task } from 'src/app/types/Task';
@@ -10,11 +9,11 @@ import { Task } from 'src/app/types/Task';
   templateUrl: './todo.component.html',
   styleUrls: ['./todo.component.scss']
 })
-export class TodoComponent implements OnInit, OnDestroy {
-  
-  getSub: Subscription
+export class TodoComponent implements OnInit {
 
   tasks: Task
+
+  status: string = "Поиск заметок..."
 
   constructor(private taskService: TaskCrudService, private dialogRef: MatDialog){}
 
@@ -22,27 +21,29 @@ export class TodoComponent implements OnInit, OnDestroy {
     this.getTask()
   }
 
-  ngOnDestroy(): void {
-    this.getSub.unsubscribe()
-  }
-
   getTask(): void{
-    this.getSub = this.taskService.getTasks().subscribe(
-      (task) => this.tasks = task
+    this.taskService.getTasks().subscribe(
+      (task) => {
+        this.tasks = task
+        this.status = ''
+      },
+      (err: Error) => {
+        this.status = err.message
+      }
     )
   }
 
-  putTask(task: any){
+  putTask(task: Task): void{
     this.taskService.changeTask(task).subscribe()
   }
 
-  deleteTask(id: number){
+  deleteTask(id: number): void{
     this.taskService.deleteTask(id).subscribe(
       () => this.getTask()
     )
   }
 
-  openDialog(){
+  openDialog(): void{
     this.dialogRef.open(AddPanelComponent).afterClosed().subscribe(
       (item) => {
         if (item.success){
@@ -53,5 +54,4 @@ export class TodoComponent implements OnInit, OnDestroy {
       }
     )
   }
-
 }

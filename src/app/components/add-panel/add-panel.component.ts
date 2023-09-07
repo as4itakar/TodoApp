@@ -15,18 +15,18 @@ export class AddPanelComponent implements OnInit {
 
   constructor(private dialogRef: MatDialogRef<AddPanelComponent>) { }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.fg = new FormGroup({
       "title": new FormControl("", Validators.required),
       "about": new FormControl("", Validators.required)
     })
   }
 
-  confirmForm(){
+  confirmForm(): void{
     this.dialogRef.close({title: this.fg.controls['title'].value, about: this.fg.controls['about'].value, success: true})
   }
 
-  close(){
+  close(): void{
     this.dialogRef.close({title: this.fg.controls['title'].value, about: this.fg.controls['about'].value, success: false})
   }
 

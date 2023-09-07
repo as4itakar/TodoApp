@@ -50,6 +50,7 @@ p.paragraph{
     border-bottom: 1px solid lightgray;
     background-color: transparent;
     outline: none;
+    width: 100%
 }
 
 .text-field:focus{
@@ -63,6 +64,8 @@ p.paragraph{
     border-radius: $low-radius;
     outline: none;
     padding: 5px;
+    width: 90%;
+    height: 150px;
 }
 
 .text-area:focus{
