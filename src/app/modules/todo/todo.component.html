@@ -1,8 +1,13 @@
 <section class="todo-list-wrapper">
   <article class="title-container">
-    <h5 class="normal-title black">Заметки</h5>
+    <h5 class="normal-title white">Заметки</h5>
+  </article>
+  <article class="add-container">
+    <mat-dialog-actions>
+      <button (click)="openDialog()" mat-raised-button >Добавить</button>
+    </mat-dialog-actions>
   </article>
   <article class="todo-container">
-    <app-task *ngFor="let task of tasks" [task]="task" (deleteEmitter)="deleteTask($event)" (taskEmitter)="sendTask($event)"></app-task>
+    <app-task *ngFor="let task of tasks" [task]="task" (deleteEmitter)="deleteTask($event)" (taskEmitter)="putTask($event)"></app-task>
   </article>
 </section>

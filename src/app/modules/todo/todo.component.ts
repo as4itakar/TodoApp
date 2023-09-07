@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { Subscription } from 'rxjs';
+import { AddPanelComponent } from 'src/app/components/add-panel/add-panel.component';
 import { TaskCrudService } from 'src/app/services/tasks/task-crud.service';
 import { Task } from 'src/app/types/Task';
 
@@ -8,29 +10,47 @@ import { Task } from 'src/app/types/Task';
   templateUrl: './todo.component.html',
   styleUrls: ['./todo.component.scss']
 })
-export class TodoComponent implements OnInit {
+export class TodoComponent implements OnInit, OnDestroy {
   
-  taskSub: Subscription
+  getSub: Subscription
 
   tasks: Task
 
-  constructor(private taskService: TaskCrudService){}
+  constructor(private taskService: TaskCrudService, private dialogRef: MatDialog){}
 
   ngOnInit(): void {
-    this.taskSub = this.taskService.getTasks().subscribe(
+    this.getTask()
+  }
+
+  ngOnDestroy(): void {
+    this.getSub.unsubscribe()
+  }
+
+  getTask(): void{
+    this.getSub = this.taskService.getTasks().subscribe(
       (task) => this.tasks = task
     )
   }
 
-  sendTask(task: any){
-    this.taskService.changeTask(task).subscribe(
-      (data) => console.log(data)
-    )
+  putTask(task: any){
+    this.taskService.changeTask(task).subscribe()
   }
 
   deleteTask(id: number){
     this.taskService.deleteTask(id).subscribe(
-      (data) => console.log(this.tasks)
+      () => this.getTask()
+    )
+  }
+
+  openDialog(){
+    this.dialogRef.open(AddPanelComponent).afterClosed().subscribe(
+      (item) => {
+        if (item.success){
+          this.taskService.addTask(item).subscribe(
+            () => this.getTask()
+          )
+        }
+      }
     )
   }
 

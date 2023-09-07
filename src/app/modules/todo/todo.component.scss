@@ -3,17 +3,13 @@
 .todo-list-wrapper{
     margin: auto;
     width: 80%;
-    border-radius: $big-radius;
-    background-color: $white;
-}
-
-.title-container{
-    padding: 10px 0;
-    width: 100%;
-    text-align: center;
 }
 
 .todo-container{
     padding: 10px 0;
+    width: 100%;
+}
+
+.add-container{
     width: 100%;
 }

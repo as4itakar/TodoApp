@@ -10,7 +10,7 @@
 }
 
 .header-container{
-    width: 60%;
+    width: 80%;
     height: 100%;
     margin: 0 auto;
     display: flex;
@@ -31,6 +31,7 @@ article.visible{
 .nav-link{
     cursor: pointer;
     margin-right: 10px;
+    font-size: 1rem;
 }
 
 .nav-menu{

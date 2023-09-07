@@ -6,7 +6,6 @@ import { HeaderComponent } from './components/header/header.component';
 import { MainComponent } from './components/main/main.component';
 import { TodoModule } from './modules/todo/todo.module';
 import { MatButtonModule } from '@angular/material/button';
-import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [

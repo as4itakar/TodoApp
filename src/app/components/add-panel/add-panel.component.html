@@ -1,0 +1,19 @@
+<section class="panel-container">
+  <article class="title-container">
+    <h5 class="normal-title black">Добавить заметку</h5>
+  </article>
+  <form [formGroup]="this.fg" class="form-container" (ngSubmit)="confirmForm()" novalidate>
+    <div class="input-container">
+      <input formControlName="title" class="text-field" placeholder="Введите название..." type="text">
+      <p *ngIf="fg.controls['title'].invalid && fg.controls['title'].touched" class="black">Поле должно быть заполнено...</p>
+    </div>
+    <div class="input-container">
+      <input formControlName="about" class="text-field" placeholder="Введите описание..." type="text">
+      <p *ngIf="fg.controls['about'].invalid && fg.controls['about'].touched" class="black">Поле должно быть заполнено...</p>
+    </div>
+    <div class="submit-container">
+      <button [disabled]="fg.invalid" type="submit" mat-raised-button>Сохранить</button>
+    </div>
+  </form>
+  <button (click)="close()" class="close">&times;</button>
+</section>
