@@ -19,10 +19,6 @@
     position: relative;
 }
 
-article.visible{
-    display: block;
-}
-
 .logo-container{
     user-select: none;
     font-size: 1.3em;
@@ -39,7 +35,6 @@ article.visible{
 .nav-menu{
     width: 30px;
     height: 100%;
-    display: none;
     cursor: pointer;
 }
 
@@ -52,4 +47,8 @@ article.visible{
 
 .active{
     color: $light-blue
+}
+
+.nav-container{
+    display: flex;
 }

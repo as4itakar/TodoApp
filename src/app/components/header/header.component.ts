@@ -7,6 +7,11 @@ import { Component } from '@angular/core';
 })
 export class HeaderComponent {
 
+  sideState: boolean = false
+
   constructor() { }
 
+  changeSideState(){
+    this.sideState = !this.sideState
+  }
 }

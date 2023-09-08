@@ -1,19 +1,4 @@
-<section *ngIf="status; else content" class="status-container">
-  <h5 class="normal-title white">{{status}}</h5>
-</section>
+<mat-dialog-actions>
+  <button class="add-btn" (click)="openDialog()" mat-raised-button >Добавить</button>
+</mat-dialog-actions>
 
-<ng-template #content>
-  <section class="todo-list-wrapper">
-    <article class="title-container">
-      <h5 class="normal-title white">Заметки</h5>
-    </article>
-    <article class="add-container">
-      <mat-dialog-actions>
-        <button (click)="openDialog()" mat-raised-button >Добавить</button>
-      </mat-dialog-actions>
-    </article>
-    <article class="todo-container">
-        <app-task *ngFor="let task of tasks" [task]="task" (deleteEmitter)="deleteTask($event)" (taskEmitter)="putTask($event)"></app-task>
-    </article>
-  </section>
-</ng-template>

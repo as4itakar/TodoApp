@@ -1,0 +1,40 @@
+@import 'src/global.scss';
+
+.sidebar-container{
+    background-color: $white;
+    position: absolute;
+    top: 50px;
+    right: 150px;
+    border-radius: $low-radius;
+    padding: 10px;
+    z-index: 3;
+    display: none;
+}
+
+.visible{
+    display: block;
+}
+
+.todo-list{
+    list-style: none;
+    min-width: 100%;
+    border-radius: $low-radius;
+    
+    li{
+        padding: 10px;
+        border-radius: $low-radius;
+        transition: .5s ease background-color;
+        user-select: none;
+        cursor: pointer;
+    }
+
+    li:hover{
+        background-color: $light-blue;
+    }
+}
+
+.active{
+    background-color: $blue;
+    color: $white;
+    font-weight: bold;
+}

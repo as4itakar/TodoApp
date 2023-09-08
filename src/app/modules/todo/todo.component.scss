@@ -1,27 +1,8 @@
 @import 'src/global.scss';
 
-.todo-list-wrapper{
-    margin: auto;
-    width: 80%;
-}
-
-.todo-container{
-    padding: 10px 0;
-    width: 100%;
-}
-
-.add-container{
-    width: 100%;
-}
-
-.status-container{
-    width: 100%;
-    padding: 10px 0;
-    text-align: center;
-}
-
-@media screen and (max-width: 750px) {
-    .todo-list-wrapper{
-        width: 90%
-    }
+.add-btn{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }

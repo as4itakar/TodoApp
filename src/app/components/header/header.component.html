@@ -8,11 +8,13 @@
       [routerLinkActiveOptions]="{exact:true}" >Главная</a>
       <a class="nav-link" routerLink="/tasks" routerLinkActive="active"
       [routerLinkActiveOptions]="{exact:true}">Заметки</a>
-    </section>
-    <section class="nav-menu">
-      <div class="menu-el"></div>
-      <div class="menu-el"></div>
-      <div class="menu-el"></div>
+      <article (click)="changeSideState()" class="nav-menu">
+        <div class="menu-el"></div>
+        <div class="menu-el"></div>
+        <div class="menu-el"></div>
+      </article>
     </section>
   </nav>
 </header>
+<app-sidebar [(state)]="sideState"></app-sidebar>
+

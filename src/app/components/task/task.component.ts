@@ -1,4 +1,7 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Subscription } from 'rxjs';
+import { TaskCrudService } from 'src/app/services/tasks/task-crud.service';
 import { Task } from 'src/app/types/Task';
 
 @Component({
@@ -6,37 +9,50 @@ import { Task } from 'src/app/types/Task';
   templateUrl: './task.component.html',
   styleUrls: ['./task.component.scss'],
 })
-export class TaskComponent{
+export class TaskComponent implements OnInit, OnDestroy{
 
-  @Input() task: Task
+  task: Task
+  
+  id: number
 
-  @Output() taskEmitter = new EventEmitter<Task>()
-
-  @Output() deleteEmitter = new EventEmitter<number>()
+  idSub: Subscription
 
   taskChanged: boolean = false
 
-  constructor() { }
-
-  changeTitle(title: string): void{
-    this.task.title = title
+  constructor(private activatedRoute: ActivatedRoute, private taskService: TaskCrudService, private route: Router) {
   }
 
-  changeAbout(about: string): void{
-    this.task.about = about
+  ngOnInit(): void {
+    this.idSub = this.activatedRoute.params.subscribe( params => {
+      this.id = params['id']
+      this.getTask()
+    })
   }
 
-  startChanges(): void{
+  ngOnDestroy(): void {
+    this.idSub.unsubscribe()
+  }
+
+  getTask(): void{
+    this.taskService.getTasksById(this.id).subscribe( 
+      t => {
+        this.task = t
+      }
+    )
+  }
+
+  changeTask(): void{
     this.taskChanged = true
   }
 
-  saveChanges(): void{
-    this.taskEmitter.emit(this.task)
+  saveTask(){
+    this.taskService.changeTask(this.task).subscribe()
     this.taskChanged = false
   }
 
-  deleteTask(): void{
-    this.deleteEmitter.emit(this.task.id)
+  deleteTask(){
+    this.taskService.deleteTask(this.task.id).subscribe()
+    this.route.navigate(['/tasks'])
   }
 
 }
