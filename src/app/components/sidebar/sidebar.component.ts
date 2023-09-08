@@ -1,4 +1,5 @@
-import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, Input, OnInit, Output, EventEmitter, OnDestroy } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { TaskSubjectService } from 'src/app/services/task-subject/task-subject.service';
 import { TaskCrudService } from 'src/app/services/tasks/task-crud.service';
 import { Task } from 'src/app/types/Task';
@@ -8,7 +9,9 @@ import { Task } from 'src/app/types/Task';
   templateUrl: './sidebar.component.html',
   styleUrls: ['./sidebar.component.scss']
 })
-export class SidebarComponent implements OnInit {
+export class SidebarComponent implements OnInit, OnDestroy {
+  
+  taskSub: Subscription
 
   @Input() state: boolean
 
@@ -18,11 +21,15 @@ export class SidebarComponent implements OnInit {
 
   tasks: Task
 
-  ngOnInit() {
-    this.taskSubject.subOnTasks().subscribe(
+  ngOnInit(): void {
+    this.taskSub = this.taskSubject.subOnTasks().subscribe(
       task => this.tasks = task
     )
     this.taskService.getTasks()
+  }
+
+  ngOnDestroy(): void {
+    this.taskSub.unsubscribe()
   }
 
   changeState(){
